@@ -1,0 +1,12 @@
+extends layout
+block content
+
+    if cart
+        each item in cart
+            p Tên sản phẩm !{item.name}
+            p Giá tiền: !{item.price}
+            p Số lượng: !{item.qty}
+            p Tổng tiền : !{item.total}
+            hr
+    else
+        p Giỏ hàng trống

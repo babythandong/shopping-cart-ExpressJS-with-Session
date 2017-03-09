@@ -1,0 +1,25 @@
+extends layout
+block content
+    style.
+        input.form-control {
+            width: 10%;
+        }
+    .wrapper.wrapper-content.animated.fadeInRight
+        .row
+            .col-lg-3
+                img(src="/images/uploads/#{sp.img_name}") 
+                
+            .col-lg-9
+                .col-lg-12
+                    p !{sp.name}
+                    p !{sp.intro}
+                .col-lg-12
+                    p Giá: !{sp.price}
+                .col-lg-12
+                    form(method="post",action="/cart/#{sp.id}")
+                        p Số lượng
+                        input.form-control(name="qty",type="number",min="0")
+                        input.fomr-control.btn.btn-white(type="submit" value="Thêm giỏ hàng")
+        hr
+        p Mô tả:
+        !{sp.content}

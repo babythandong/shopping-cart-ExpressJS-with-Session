@@ -1,0 +1,9 @@
+extends layout
+block content
+    if posts
+        p Có tất cả #{count} bài viết
+        each post in posts
+            a(href="/posts/detail/#{post.id}") #{post.title}
+            hr
+    else
+        p Không có bài viết nào

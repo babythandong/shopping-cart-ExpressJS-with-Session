@@ -1,0 +1,32 @@
+extends layout
+block content
+    .wrapper.wrapper-content.animated.fadeInRight
+        
+       .loginscreen.text-center.animated.fadeInDown
+            h3 Edit posts to IC+
+            p Edit posts to see it in action.
+            form.m-t(role='form', action='', method='post',enctype='multipart/form-data', accept-charset="utf-8")
+                .form-group
+                    input.form-control(type='text', name='title', placeholder='Title', required='' value="#{post.title}")
+                .form-group
+                    select.form-control(name='category')
+                        if categories
+                            each item in categories
+                                if(item.name == post.category)
+                                    option(value='#{item.name}' selected) #{item.name}
+                                else
+                                    option(value='#{item.name}' ) #{item.name}
+                        else
+                            option(value='Không có danh mục') Không có danh mục
+                .form-group
+                    input.form-control(type='file',name='image',placeholder='Thumbnail')
+                .form-group
+                    textarea.form-control(rows='5', name='intro',placeholder='Intro') #{post.intro}
+                .form-group
+                    textarea.form-control(rows='5', name='content',placeholder='Content',id='content') #{post.content}
+                    script(src='/ckeditor/ckeditor.js',charset="utf-8")
+                    script.
+                        CKEDITOR.replace('content')
+                .form-group
+                    input.form-control(type='text',placeholder='Author',name='author' value="#{post.author}")
+                input.btn.btn-primary.block.full-width.m-b(type='submit', name='submit', value='Edit')

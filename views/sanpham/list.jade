@@ -1,0 +1,37 @@
+extends layout
+block content
+    .wrapper.wrapper-content.animated.fadeIn
+    style.
+        img {
+        width: 100%;
+        }
+        p.price.text-center {
+            border: 1px solid #ddd;
+            border-radius: 50px;
+            width: 88px;
+            padding: 20px;
+            margin: auto;
+            color: red;
+        }
+        a.btn.detail.btn-primary {
+            margin-left: 80px;
+            margin-top: 5px;
+        }
+    .row
+        .col-lg-12
+            if sanphams
+                each item in sanphams
+                    .col-lg-3
+                        .ibox
+                            .ibox-content
+                                h5.m-b-md #{item.name}
+                                hr
+                                img(src="/images/uploads/#{item.img_name}")
+                                hr
+                                p !{item.intro}
+                                p.text-center Giá:  $#{item.price}
+                                a.btn.detail.btn-primary(href="/sanphams/detail/#{item.id}") Xem chi tiết 
+                                
+
+            else
+                p Không có bài viết nào

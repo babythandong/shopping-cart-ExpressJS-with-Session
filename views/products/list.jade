@@ -1,0 +1,53 @@
+extends layout
+block content
+    .row.wrapper.border-bottom.white-bg.page-heading
+        .col-sm-4
+            h2=title
+        .row
+        .col-lg-12
+            .wrapper.wrapper-content.animated.fadeInUp
+                .ibox
+                    .ibox-title
+                        h5 All product assigned to this account
+                        |                     
+                        .ibox-tools
+                            a.btn.btn-primary.btn-xs(href='/products/add') Create new category
+                            |                 
+                    .ibox-content
+                        .project-list
+                            table.table.table-hover
+                                tbody
+                                    if products
+                                        each catalog in products
+                                            tr
+                                                td.project-status
+                                                    span.label.label-primary Active
+                                                |                                     
+                                                td.project-title
+                                                    a(href='project_detail.html') #{catalog.name}
+                                                    |                                         
+                                                    br
+                                                    |                                         
+                                                    small Created #{moment(catalog.date).format("DD.MM.YYYY")}
+                                                |                                     
+                                                td.project-completion
+                                                    small #{catalog.description}
+                                                    |                                         
+                                                |                                     
+                                                td.project-people
+                                                    small 
+                                                        i Có #{catalog.count} sản phẩm
+                                                |                                     
+                                                td.project-actions
+                                                    a.btn.btn-white.btn-sm(href='/products/view/#{catalog._id}')
+                                                        i.fa.fa-folder
+                                                        |  View
+                                                        |                                         
+                                                    a.btn.btn-white.btn-sm(href='/products/edit/#{catalog._id}')
+                                                        i.fa.fa-pencil
+                                                        |  Edit
+                                                    a.btn.btn-white.btn-sm(href='/products/del/#{catalog._id}')
+                                                        i.fa.fa-times
+                                                        |  Del
+                                                |                                 
+                                    
